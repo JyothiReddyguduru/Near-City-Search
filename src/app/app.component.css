@@ -29,10 +29,10 @@ label {
   padding: 5px;
 }
 
-/* .success {
-  color: green;
+.success {
+  color: green !important;
 }
 
 .error {
-  color: red;
-} */
+  color: red !important;
+}
