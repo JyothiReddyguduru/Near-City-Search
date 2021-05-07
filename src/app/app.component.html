@@ -1,0 +1,50 @@
+<h1>{{ name }}</h1>
+
+<!-- TODO: Search Form -->
+
+<form name="citySearch">
+
+  <label for="cars">Choose a Country:</label>
+  <select name="country" (change)="onCountryChange($event)"
+  [(ngModel)]="country">
+  <ng-container *ngFor="let c of countries">
+    <ng-container>
+      <option [ngValue]="c">{{c.name}}</option>
+    </ng-container>
+  </ng-container>
+</select>
+
+  <label *ngIf="showStates" for="states">Choose a State:</label>
+  <select *ngIf="showStates" (change)="onStateChange($event)" name= "stateSelect" [(ngModel)]="state">
+  <ng-container *ngFor="let s of states">
+    <ng-container >
+      <option [ngValue]="s">{{s.name}}</option>
+    </ng-container>
+  </ng-container>
+</select>
+
+  <label *ngIf="showCities" for="cities">Choose a City:</label>
+  <select *ngIf="showCities"  (change)="onCityChange($event)" name= "citySelect" [(ngModel)]="city">
+  <ng-container *ngFor="let ci of cities">
+    <ng-container >
+      <option [ngValue]="ci">{{ci.name}}</option>
+    </ng-container>
+  </ng-container>
+</select>
+
+</form>
+
+<div class="citiesContainer" *ngIf="showNearestCities">
+  <label name="nearCities"> Nearest cities to {{this.city.name}} are: </label>
+  <div class="item" *ngFor="let city of nearestCities">{{city.name}}</div>
+</div>
+
+<div *ngIf="showEmptyMessage">
+  <label class="success" name="suucessMessage">
+    {{message}} </label>
+</div>
+
+<div *ngIf="showErrorMessage">
+  <label class="error" name="errorMessage">
+    {{message}} </label>
+</div>
